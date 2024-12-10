@@ -33,5 +33,5 @@ module.exports = {
     },
   },
   plugins: [],
-  presets: [require("nativewind/preset")], // Correct NativeWind preset path
+  presets: [require("nativewind/preset")],
 };

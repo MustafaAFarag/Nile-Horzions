@@ -6,10 +6,10 @@ import { StatusBar } from "expo-status-bar";
 const Index = () => {
   return (
     <View className="flex-1 bg-blue-300 items-center justify-center">
-      <Text className="text-2xl text-red-500">Nile Horizons</Text>
+      <Text className="text-2xl text-red-500 font-pblack">Nile Horizons</Text>
       <StatusBar style="auto" />
-      <Link href="/profile" className="text-red-500">
-        Go to Profile
+      <Link href="/home" className="text-red-500">
+        Go to Home
       </Link>
     </View>
   );
