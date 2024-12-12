@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
 import "../global.css";
 import { useFonts } from "expo-font";
+
+// const checkUserLoggedIn = async () => {
+//   return true;
+// };
 
 SplashScreen.preventAutoHideAsync();
 
@@ -18,6 +22,8 @@ const RootLayout = () => {
     "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
   });
 
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
   useEffect(() => {
     if (error) throw error;
 
@@ -26,13 +32,26 @@ const RootLayout = () => {
     }
   }, [fontsLoaded, error]);
 
-  if (!fontsLoaded && !error) {
+  // useEffect(() => {
+  //   const fetchAuthStatus = async () => {
+  //     const loggedIn = await checkUserLoggedIn();
+  //     setIsAuthenticated(loggedIn);
+  //   };
+  //   fetchAuthStatus();
+  // }, []);
+
+  // if (!fontsLoaded || isAuthenticated === null) {
+  //   return null;
+  // }
+  if (!fontsLoaded) {
     return null;
   }
 
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 };
