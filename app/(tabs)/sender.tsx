@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const Flights = () => {
+const Sender = () => {
   return (
     <View>
-      <Text>Flights</Text>
+      <Text>Sender</Text>
     </View>
   );
 };
 
-export default Flights;
+export default Sender;

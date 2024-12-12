@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { SplashScreen, Stack } from "expo-router";
+import { router, SplashScreen, Stack } from "expo-router";
 import "../global.css";
 import { useFonts } from "expo-font";
 
-// const checkUserLoggedIn = async () => {
-//   return true;
-// };
+const checkUserLoggedIn = () => {
+  return true;
+};
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,20 +32,11 @@ const RootLayout = () => {
     }
   }, [fontsLoaded, error]);
 
-  // useEffect(() => {
-  //   const fetchAuthStatus = async () => {
-  //     const loggedIn = await checkUserLoggedIn();
-  //     setIsAuthenticated(loggedIn);
-  //   };
-  //   fetchAuthStatus();
-  // }, []);
-
-  // if (!fontsLoaded || isAuthenticated === null) {
-  //   return null;
-  // }
-  if (!fontsLoaded) {
-    return null;
-  }
+  useEffect(() => {
+    if (!checkUserLoggedIn()) {
+      router.replace("/sign-up");
+    }
+  }, []);
 
   return (
     <Stack>

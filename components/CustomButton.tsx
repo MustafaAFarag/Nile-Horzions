@@ -2,22 +2,26 @@ import { Text, TouchableOpacity } from "react-native";
 
 type CustomButtonProps = {
   title: string;
-  handlePress: () => void | Promise<void>;
-  containerStyles?: string;
+  handlePress?: () => void | Promise<void>;
+  className?: string;
   textStyles?: string;
+  height?: string;
 };
 
 const CustomButton = ({
   title,
   handlePress,
-  containerStyles = "",
+  className = "",
   textStyles = "",
+  height,
 }: CustomButtonProps) => {
   return (
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-secondary rounded-xl min-h-[60px] flex flex-row justify-center items-center ${containerStyles}`}
+      className={`bg-secondary rounded-xl ${
+        height ? height : "min-h-[60px]"
+      } flex flex-row justify-center items-center ${className}`}
     >
       <Text className={`text-primary text-lg font-psemibold ${textStyles}`}>
         {title}

@@ -18,7 +18,7 @@ const SignIn = () => {
     //   return;
     // }
 
-    router.replace("/home"); // why can't go index
+    router.replace("/"); // why can't go index
   }
 
   return (

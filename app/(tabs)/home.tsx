@@ -2,27 +2,32 @@ import { View, Text } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
+import { router } from "expo-router";
 
-const Home = () => {
-  const handleTravelerPress = () => {};
+const Index = () => {
+  const handleTravelerPress = () => {
+    router.push("/create");
+  };
 
-  const handleSenderPress = () => {};
+  const handleSenderPress = () => {
+    router.push("/flights");
+  };
   return (
     <SafeAreaView className="h-full bg-blue-300">
       <View className="w-full justify-center h-full p-4">
         <CustomButton
           title="Traveler"
           handlePress={handleTravelerPress}
-          containerStyles="m-2"
+          className="m-2"
         />
         <CustomButton
           title="Sender"
-          handlePress={handleTravelerPress}
-          containerStyles="m-2"
+          handlePress={handleSenderPress}
+          className="m-2"
         />
       </View>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default Index;

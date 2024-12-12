@@ -74,7 +74,7 @@ const SignUp = () => {
           <CustomButton
             title="Sign Up"
             handlePress={handleSubmit}
-            containerStyles="mt-7"
+            className="mt-7"
           />
 
           <View className="justify-center pt-5 flex-row gap-2">
