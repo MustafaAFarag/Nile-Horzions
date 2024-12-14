@@ -61,13 +61,11 @@ const ReservationStatus = () => {
   const headers = ["ID", "Receive Date", "W", "Paper Count", "Status"];
 
   return (
-    <SafeAreaView className="h-full bg-blue-100">
+    <SafeAreaView className="h-full bg-blue-300">
       <ScrollView className="w-full h-full p-6">
-        <View className="flex-row items-center justify-between mb-6">
-          <Text className="text-xl font-bold text-blue-800">
-            Reservations Status
-          </Text>
-        </View>
+        <Text className="text-2xl font-pbold text-center text-red-500 mb-6">
+          Reservations Status
+        </Text>
 
         <Table
           headers={headers}

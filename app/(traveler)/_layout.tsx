@@ -13,13 +13,10 @@ const StackLayout = () => {
         options={{ title: "Reservations", headerShown: false }}
       />
       <Stack.Screen
-        name="createflight"
+        name="createFlight"
         options={{ title: "Create Flight", headerShown: false }}
       />
-      <Stack.Screen
-        name="flights"
-        options={{ title: "Flights", headerShown: false }}
-      />
+
       <Stack.Screen
         name="myFlights"
         options={{ title: "My Flights", headerShown: false }}

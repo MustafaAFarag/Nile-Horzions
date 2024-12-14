@@ -7,7 +7,7 @@ import { router } from "expo-router";
 
 const Reservations = () => {
   const handleEditPress = () => {
-    router.push("/flightInfo");
+    router.push("/editFlight");
   };
 
   const handleClosePress = () => {

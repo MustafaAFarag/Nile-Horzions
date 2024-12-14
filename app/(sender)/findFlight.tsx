@@ -7,20 +7,16 @@ import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 
-const Create = () => {
-  const handleCancelPress = () => {
-    router.push("/reservations");
-  };
-
-  const handleUpdatePress = () => {
-    router.push("/reservations");
+const FindFlights = () => {
+  const handleFindlPress = () => {
+    router.push("/flights");
   };
 
   return (
     <SafeAreaView className="h-full bg-blue-300">
       <ScrollView className="w-full h-full p-6">
-        <Text className="text-2xl font-pbold text-center text-red-500 mb-6">
-          Edit Flight
+        <Text className="text-2xl font-pbold text-center text-red-500 ">
+          Find Flight
         </Text>
 
         <TravelerDropdown
@@ -38,14 +34,8 @@ const Create = () => {
         />
         <View className="flex-row justify-between mt-6 gap-4">
           <CustomButton
-            title="Cancel"
-            handlePress={handleCancelPress}
-            className="flex-1 "
-            textStyles="text-white"
-          />
-          <CustomButton
-            title="Update"
-            handlePress={handleUpdatePress}
+            title="Find"
+            handlePress={handleFindlPress}
             className="flex-1 "
             textStyles="text-white"
           />
@@ -56,4 +46,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default FindFlights;

@@ -46,7 +46,7 @@ const ReservationsInfo = () => {
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-100">
+    <SafeAreaView className="h-full bg-blue-300">
       <ScrollView className="w-full h-full p-6">
         {/* Table Component */}
         <Table data={data} onRowPress={(row) => console.log(row)} />
