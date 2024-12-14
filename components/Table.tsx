@@ -9,13 +9,15 @@ const getStatusStyles = (status: string) => {
       return "bg-yellow-100 text-yellow-500";
     case "Cancelled":
       return "bg-red-100 text-red-500";
+    case "Deliver":
+      return "bg-blue-300 text-white";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "";
   }
 };
 
 interface TableProps {
-  headers: string[];
+  headers?: string[];
   data: any[];
   onRowPress?: (row: any) => void;
 }
@@ -25,7 +27,7 @@ const Table = ({ headers, data, onRowPress }: TableProps) => {
     <View>
       {/* Table Header */}
       <View className="flex-row justify-between border-b-2 border-gray-300 p-2 bg-blue-600 rounded-lg">
-        {headers.map((header, index) => (
+        {headers?.map((header, index) => (
           <Text
             key={index}
             className={`flex-1 text-sm font-bold text-white text-center`}
@@ -54,7 +56,7 @@ interface TableRowProps {
   isEven: boolean;
 }
 
-const TableRow = ({ row, onPress, isEven }: TableRowProps) => (
+export const TableRow = ({ row, onPress, isEven }: TableRowProps) => (
   <Pressable
     onPress={onPress}
     className={`flex-row justify-between items-center py-3 px-2 mb-2 rounded-lg ${

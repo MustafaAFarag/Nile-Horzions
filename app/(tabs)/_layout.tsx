@@ -9,15 +9,11 @@ const StackLayout = () => {
       }}
     >
       <Stack.Screen
-        name="home"
-        options={{ title: "Home", headerShown: false }}
-      />
-      <Stack.Screen
         name="sender"
         options={{ title: "Sender", headerShown: false }}
       />
       <Stack.Screen
-        name="create"
+        name="createflight"
         options={{ title: "Create Flight", headerShown: false }}
       />
       <Stack.Screen

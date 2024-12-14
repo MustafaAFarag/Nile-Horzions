@@ -3,14 +3,15 @@ import { SafeAreaView, ScrollView, View, Text } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import Table from "@/components/Table"; // Import the reusable Table component
+import { router } from "expo-router";
 
 const Reservations = () => {
   const handleEditPress = () => {
-    console.log("Edit pressed");
+    router.push("/flightInfo");
   };
 
   const handleClosePress = () => {
-    console.log("Close Reservation pressed");
+    router.push("/reservationStatus");
   };
 
   const reservations = [
@@ -71,7 +72,7 @@ const Reservations = () => {
         <Table
           headers={headers}
           data={reservations}
-          onRowPress={(row) => console.log("Row pressed:", row)}
+          onRowPress={() => router.push("/reservationsInfo")}
         />
 
         {/* Totals Section */}

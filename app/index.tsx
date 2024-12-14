@@ -7,7 +7,7 @@ import { StatusBar } from "expo-status-bar";
 
 const Index = () => {
   const handleTravelerPress = () => {
-    router.push("/create");
+    router.push("/createflight");
   };
 
   const handleSenderPress = () => {

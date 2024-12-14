@@ -64,7 +64,7 @@ const myFlights = () => {
         {flights.map((flight, index) => (
           <Pressable
             key={index}
-            onPress={() => router.push("/Reservations")}
+            onPress={() => router.push("/reservations")}
             className={`flex-row justify-between items-center py-3 px-2 mb-4 rounded-lg ${
               index % 2 === 0 ? "bg-gray-100" : "bg-white"
             }`}
