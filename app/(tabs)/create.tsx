@@ -3,8 +3,14 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TravelerDropdown from "@/components/TravelerDropdown";
 import TravelerOptions from "@/components/TravelerOptions";
+import { StatusBar } from "expo-status-bar";
+import CustomButton from "@/components/CustomButton";
+import { router } from "expo-router";
 
 const Create = () => {
+  const handleCreatePress = () => {
+    router.push("/myFlights");
+  };
   return (
     <SafeAreaView className="h-full bg-blue-300">
       <View className="w-full h-full p-6">
@@ -25,7 +31,9 @@ const Create = () => {
           title="Last day for delivery"
           placeholder="14-12-2024"
         />
+        <CustomButton title="Create" handlePress={handleCreatePress} />
       </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };

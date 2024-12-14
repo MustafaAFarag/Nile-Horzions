@@ -1,8 +1,9 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const Index = () => {
   const handleTravelerPress = () => {
@@ -25,10 +26,8 @@ const Index = () => {
           handlePress={handleSenderPress}
           className="m-2"
         />
-        <Link href="/home" className="text-red-500 text-center">
-          Go to Tabs Section
-        </Link>
       </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };

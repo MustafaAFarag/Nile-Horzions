@@ -23,7 +23,9 @@ const CustomButton = ({
         height ? height : "min-h-[60px]"
       } flex flex-row justify-center items-center ${className}`}
     >
-      <Text className={`text-primary text-lg font-psemibold ${textStyles}`}>
+      <Text
+        className={`text-center text-primary text-lg font-psemibold ${textStyles}`}
+      >
         {title}
       </Text>
     </TouchableOpacity>
