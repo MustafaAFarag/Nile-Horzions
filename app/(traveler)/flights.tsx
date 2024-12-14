@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
@@ -18,7 +18,7 @@ const Flights = () => {
 
   return (
     <SafeAreaView className="h-full bg-blue-300">
-      <View className="w-full h-full p-6">
+      <ScrollView className="w-full h-full p-6">
         {/* Header Section */}
         <View className="flex-row items-center justify-between mb-6">
           <Text className="text-lg font-pmedium text-gray-800">Flights</Text>
@@ -68,7 +68,7 @@ const Flights = () => {
             </Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
       <StatusBar style="auto" />
     </SafeAreaView>
   );

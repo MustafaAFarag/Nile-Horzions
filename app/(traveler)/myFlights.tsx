@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -34,7 +34,7 @@ const myFlights = () => {
 
   return (
     <SafeAreaView className="h-full bg-blue-300">
-      <View className="w-full h-full p-6">
+      <ScrollView className="w-full h-full p-6">
         {/* Header Section */}
         <View className="flex-row items-center justify-between mb-6">
           <Text className="text-lg font-pmedium text-gray-800">My Flights</Text>
@@ -85,7 +85,7 @@ const myFlights = () => {
             </View>
           </Pressable>
         ))}
-      </View>
+      </ScrollView>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
