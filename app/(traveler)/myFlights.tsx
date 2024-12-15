@@ -1,12 +1,12 @@
 import { View, Text, Pressable, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { router } from "expo-router";
 import CustomButton from "@/components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 
 const myFlights = () => {
-  const router = useRouter();
+  const handleRowPress = () => router.push("/Reservations");
 
   const flights = [
     { id: "1111", date: "15-12", weight: "5kg", status: "Confirmed" },
@@ -40,9 +40,8 @@ const myFlights = () => {
           <Text className="text-lg font-pmedium text-gray-800">My Flights</Text>
           <CustomButton
             title="Filter"
-            height="40px"
-            className="w-1/3 bg-white"
-            textStyles="text-blue-500"
+            handlePress={() => console.log("Filter button pressed")}
+            className="w-1/3 bg-blue-500 rounded-lg py-3 text-white"
           />
         </View>
 
@@ -64,7 +63,7 @@ const myFlights = () => {
         {flights.map((flight, index) => (
           <Pressable
             key={index}
-            onPress={() => router.push("/reservations")}
+            onPress={handleRowPress}
             className={`flex-row justify-between items-center py-3 px-2 mb-4 rounded-lg ${
               index % 2 === 0 ? "bg-gray-100" : "bg-white"
             }`}

@@ -7,24 +7,28 @@ import { StatusBar } from "expo-status-bar";
 
 const Index = () => {
   const handleTravelerPress = () => {
-    router.push("/createFlight");
+    router.push("/CreateFlight");
   };
 
   const handleSenderPress = () => {
-    router.push("/flights");
+    router.push("/Flights");
   };
+
   return (
     <SafeAreaView className="h-full bg-blue-300">
-      <View className="w-full justify-center h-full p-4">
+      <View className="w-full justify-center h-full p-6">
+        {/* Traveler Button */}
         <CustomButton
           title="Traveler"
           handlePress={handleTravelerPress}
-          className="m-2"
+          className="bg-green-500 text-white rounded-lg py-3 px-6 mb-4"
         />
+
+        {/* Sender Button */}
         <CustomButton
           title="Sender"
           handlePress={handleSenderPress}
-          className="m-2"
+          className="bg-blue-500 text-white rounded-lg py-3 px-6"
         />
       </View>
       <StatusBar style="auto" />

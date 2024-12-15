@@ -1,8 +1,8 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import TravelerDropdown from "@/components/TravelerDropdown";
-import TravelerOptions from "@/components/TravelerOptions";
+import TravelerDropdown from "@/components/TwoInput";
+import TravelerOptions from "@/components/OneInput";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";

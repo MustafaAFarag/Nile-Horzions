@@ -1,11 +1,11 @@
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 type CustomButtonProps = {
   title: string;
   handlePress?: () => void | Promise<void>;
   className?: string;
   textStyles?: string;
-  height?: string;
+  icon?: React.ReactNode;
 };
 
 const CustomButton = ({
@@ -13,19 +13,17 @@ const CustomButton = ({
   handlePress,
   className = "",
   textStyles = "",
-  height,
+  icon,
 }: CustomButtonProps) => {
   return (
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-secondary rounded-xl ${
-        height ? height : "min-h-[60px]"
-      } flex flex-row justify-center items-center ${className}`}
+      className={`flex flex-row justify-center items-center ${className}`}
     >
-      <Text
-        className={`text-center text-primary text-lg font-psemibold ${textStyles}`}
-      >
+      {/* Add icon if provided */}
+      <Text>{icon && <View className="mr-2">{icon}</View>}</Text>
+      <Text className={`text-center text-lg font-psemibold ${textStyles}`}>
         {title}
       </Text>
     </TouchableOpacity>

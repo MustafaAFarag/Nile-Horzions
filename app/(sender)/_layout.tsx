@@ -8,7 +8,7 @@ const StackLayout = () => {
       }}
     >
       <Stack.Screen
-        name="flights"
+        name="Flights"
         options={{ title: "Flights", headerShown: false }}
       />
     </Stack>

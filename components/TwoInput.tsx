@@ -1,12 +1,12 @@
 import { View, Text, TextInput } from "react-native";
 import React from "react";
 
-type TravelerDropdownProps = {
+type TwoInputProps = {
   title: string;
   placeholder: string[];
 };
 
-const TravelerDropdown = ({ title, placeholder }: TravelerDropdownProps) => {
+const TwoInput = ({ title, placeholder }: TwoInputProps) => {
   return (
     <View className="my-4">
       <Text className="text-base font-pmedium text-gray-800 mb-2">{title}</Text>
@@ -26,4 +26,4 @@ const TravelerDropdown = ({ title, placeholder }: TravelerDropdownProps) => {
   );
 };
 
-export default TravelerDropdown;
+export default TwoInput;
