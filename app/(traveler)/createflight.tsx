@@ -15,9 +15,9 @@ const CreateFlight = () => {
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
+    <SafeAreaView className="h-full bg-blue-300 pt-14 ">
       <ScrollView className="w-full h-full p-6">
-        <Text className="text-2xl font-pbold text-center text-red-500 mb-6">
+        <Text className="text-2xl font-pbold text-center text-red-500 ">
           Create Flight
         </Text>
 

@@ -1,12 +1,16 @@
-import { View, Text, Pressable, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, Text, Pressable, View } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import CustomButton from "@/components/CustomButton";
+import TableHeaderRow from "@/components/TableHeaderRow";
+import TableDataRow from "@/components/TableDataRow";
 import { StatusBar } from "expo-status-bar";
+import CustomButton from "@/components/CustomButton";
 
-const myFlights = () => {
-  const handleRowPress = () => router.push("/Reservations");
+const MyFlights = () => {
+  const handleRowPress = () => {
+    // Navigate to the /Reservations route
+    router.push("/Reservations");
+  };
 
   const flights = [
     { id: "1111", date: "15-12", weight: "5kg", status: "Confirmed" },
@@ -14,10 +18,9 @@ const myFlights = () => {
     { id: "3333", date: "16-12", weight: "8kg", status: "Cancelled" },
     { id: "4444", date: "17-12", weight: "10kg", status: "Confirmed" },
     { id: "5555", date: "18-12", weight: "3kg", status: "Pending" },
-    { id: "6666", date: "19-12", weight: "6kg", status: "Confirmed" },
-    { id: "7777", date: "20-12", weight: "12kg", status: "Confirmed" },
-    { id: "8888", date: "21-12", weight: "7kg", status: "Cancelled" },
   ];
+
+  const headers = ["ID", "Date", "Weight", "Status"];
 
   const getStatusStyles = (status: string) => {
     switch (status) {
@@ -33,55 +36,31 @@ const myFlights = () => {
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14 ">
+      <ScrollView className="w-full px-4">
         {/* Header Section */}
-        <View className="flex-row items-center justify-between mb-6">
-          <Text className="text-lg font-pmedium text-gray-800">My Flights</Text>
+        <View className="flex-row items-center justify-between mb-8">
+          <Text className="text-2xl font-pbold text-gray-800">My Flights</Text>
           <CustomButton
             title="Filter"
             handlePress={() => console.log("Filter button pressed")}
-            className="w-1/3 bg-blue-500 rounded-lg py-3 text-white"
+            className="w-32 bg-blue-500 rounded-lg py-3 text-white"
           />
         </View>
 
         {/* Table Header */}
-        <View className="flex-row justify-between border-b-2 border-gray-400 p-2 mb-4 bg-red-800 rounded-lg">
-          <Text className="flex-1 text-base font-psemibold text-white">ID</Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-center">
-            Date
-          </Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-center">
-            Weight
-          </Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-right">
-            Status
-          </Text>
-        </View>
+        <TableHeaderRow headers={headers} className="mb-4 bg-blue-700" />
 
-        {/* Table Rows */}
+        {/* Table Data */}
         {flights.map((flight, index) => (
           <Pressable
-            key={index}
+            key={flight.id}
             onPress={handleRowPress}
-            className={`flex-row justify-between items-center py-3 px-2 mb-4 rounded-lg ${
+            className={`flex-row justify-between items-center py-4 px-4 mb-3 rounded-lg ${
               index % 2 === 0 ? "bg-gray-100" : "bg-white"
             }`}
           >
-            <Text className="flex-1 text-base text-gray-800">{flight.id}</Text>
-            <Text className="flex-1 text-base text-gray-800 text-center">
-              {flight.date}
-            </Text>
-            <Text className="flex-1 text-base text-gray-800 text-center">
-              {flight.weight}
-            </Text>
-            <View
-              className={`flex-1 text-center px-2 py-1 rounded-lg items-center justify-center ${getStatusStyles(
-                flight.status
-              )}`}
-            >
-              <Text className="text-base font-psemibold">{flight.status}</Text>
-            </View>
+            <TableDataRow rowData={flight} getStatusStyles={getStatusStyles} />
           </Pressable>
         ))}
       </ScrollView>
@@ -90,4 +69,4 @@ const myFlights = () => {
   );
 };
 
-export default myFlights;
+export default MyFlights;
