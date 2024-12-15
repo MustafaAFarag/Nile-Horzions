@@ -1,18 +1,21 @@
 import React from "react";
-import { SafeAreaView, ScrollView, View, Text } from "react-native";
+import { SafeAreaView, ScrollView, View, Text, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
-import Table from "@/components/Table"; // Import the reusable Table component
+import TableHeaderRow from "@/components/TableHeaderRow";
+import TableDataRow from "@/components/TableDataRow";
 import { router } from "expo-router";
 
 const Reservations = () => {
   const handleEditPress = () => {
-    router.push("/editFlight");
+    router.push("/EditFlight");
   };
 
   const handleClosePress = () => {
-    router.push("/reservationStatus");
+    router.push("/ReservationsStatus");
   };
+
+  const handleRowPress = () => router.push("/ReservationInfo");
 
   const reservations = [
     {
@@ -61,61 +64,68 @@ const Reservations = () => {
   ];
 
   const headers = ["Type", "Weight", "Paper", "Fees", "Status"];
+  const total = ["Total", "25KG", "Yes", "2500EGP"];
+  const available = ["Available", "10KG", "No", "800EGP"];
+
+  const getStatusStyles = (status: string) => {
+    switch (status) {
+      case "Confirmed":
+        return "bg-green-100 text-green-500";
+      case "Pending":
+        return "bg-yellow-100 text-yellow-500";
+      case "Cancelled":
+        return "bg-red-100 text-red-500";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14 ">
+      <ScrollView className="w-full px-4">
+        {/* Page Header */}
         <View className="flex-row items-center justify-between mb-6">
           <Text className="text-xl font-bold text-blue-800">Reservations</Text>
         </View>
 
-        <Table
-          headers={headers}
-          data={reservations}
-          onRowPress={() => router.push("/reservationsInfo")}
-        />
+        {/* Table Section */}
+        <TableHeaderRow headers={headers} className="bg-blue-700 mb-3" />
+
+        {/* Table Data */}
+        {reservations.map((reservation, index) => (
+          <Pressable
+            key={index}
+            onPress={handleRowPress}
+            className={`flex-row justify-between items-center py-4 px-4 mb-3 rounded-lg ${
+              index % 2 === 0 ? "bg-gray-100" : "bg-white"
+            }`}
+          >
+            <TableDataRow
+              rowData={reservation}
+              getStatusStyles={getStatusStyles}
+            />
+          </Pressable>
+        ))}
 
         {/* Totals Section */}
-        <View className="flex-row justify-between border-t-2 border-gray-300 p-3 mt-6 bg-blue-600 rounded-lg">
-          <Text className="flex-1 text-sm font-bold text-white">Total</Text>
-          <Text className="flex-1 text-sm font-bold text-white text-center">
-            25kg
-          </Text>
-          <Text className="flex-1 text-sm font-bold text-white text-center">
-            Yes
-          </Text>
-          <Text className="flex-1 text-sm font-bold text-white text-right">
-            2500 EGP
-          </Text>
-        </View>
+        <TableHeaderRow headers={total} className="bg-blue-700 mb-3" />
 
         {/* Available Section */}
-        <View className="flex-row justify-between border-t-2 border-gray-300 p-3 mt-2 bg-blue-500 rounded-lg">
-          <Text className="flex-1 text-sm font-bold text-white">Available</Text>
-          <Text className="flex-1 text-sm font-bold text-white text-center">
-            10kg
-          </Text>
-          <Text className="flex-1 text-sm font-bold text-white text-center">
-            No
-          </Text>
-          <Text className="flex-1 text-sm font-bold text-white text-right">
-            800 EGP
-          </Text>
-        </View>
+        <TableHeaderRow headers={available} className="bg-blue-700 mb-3" />
 
         {/* Action Buttons */}
         <View className="flex-row justify-between mt-6 gap-4">
           <CustomButton
             title="Edit"
             handlePress={handleEditPress}
-            className="flex-1 bg-green-500"
-            textStyles="text-white"
+            className="flex-1 bg-green-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
           <CustomButton
             title="Close Reservation"
             handlePress={handleClosePress}
-            className="flex-1 bg-red-500"
-            textStyles="text-white"
+            className="flex-1 bg-red-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
         </View>
       </ScrollView>

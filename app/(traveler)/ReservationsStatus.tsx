@@ -70,7 +70,7 @@ const ReservationStatus = () => {
         <Table
           headers={headers}
           data={reservations}
-          onRowPress={() => router.push("/reservationsInfo")}
+          onRowPress={() => router.push("/ReservationInfo")}
         />
       </ScrollView>
       <StatusBar style="auto" />
