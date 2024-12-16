@@ -6,22 +6,27 @@ import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 import { icons } from "@/constants";
+import OneInput from "@/components/OneInput";
+import CounterInput from "@/components/CounterInput";
 
 const Booking = () => {
   const handleCheckoutPress = () => {
-    router.push("/checkout");
+    router.push("/Checkout");
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full px-4">
         <Text className="text-2xl font-pbold text-center text-red-500 mb-6">
           Booking
         </Text>
 
-        <TravelerOptions title="Weight" placeholder="- 2 KG +" />
-        <TravelerOptions title="Type of Weight" placeholder="Any" />
-        <TravelerOptions title="Paper Count" placeholder="- 3 +" />
+        <CounterInput title="Weight" minValue={0} maxValue={50} />
+
+        <OneInput title="Type of Weight" placeholder="Clothes,Paper" />
+
+        <CounterInput title="Paper Count" minValue={0} maxValue={50} />
+
         <View className="flex-row gap-10">
           <Text className="text-base font-pmedium text-gray-800 w-1/3">
             Upload Picture
@@ -43,16 +48,14 @@ const Booking = () => {
           />
         </View>
 
-        <TravelerOptions title="Delivery Fees" placeholder="45 EGP" />
-        <TravelerOptions title="Total" placeholder="450 EGP" />
-        <View className="flex-row justify-between mt-6 gap-4">
-          <CustomButton
-            title="Checkout"
-            handlePress={handleCheckoutPress}
-            className="flex-1 "
-            textStyles="text-white"
-          />
-        </View>
+        <OneInput title="Delivery Fees" placeholder="45 EGP" />
+        <OneInput title="Total" placeholder="450 EGP" />
+
+        <CustomButton
+          title="Checkout"
+          handlePress={handleCheckoutPress}
+          className="bg-green-500 text-white rounded-lg py-3 px-8 mt-6"
+        />
       </ScrollView>
       <StatusBar style="auto" />
     </SafeAreaView>

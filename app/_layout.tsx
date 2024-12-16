@@ -4,7 +4,7 @@ import "../global.css";
 import { useFonts } from "expo-font";
 
 const checkUserLoggedIn = () => {
-  return true;
+  return false;
 };
 
 SplashScreen.preventAutoHideAsync();

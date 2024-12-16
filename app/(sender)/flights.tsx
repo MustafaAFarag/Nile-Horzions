@@ -4,6 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "@/components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
+import TableHeaderRow from "@/components/TableHeaderRow";
+import TableDataRow from "@/components/TableDataRow";
 
 const Flights = () => {
   const flights = [
@@ -18,43 +20,30 @@ const Flights = () => {
   ];
 
   const handleFindPress = () => {
-    router.push("/findFlight");
+    router.push("/FindFlight");
   };
 
   const handleRowPress = () => {
-    router.push("/infoFlight");
+    router.push("/InfoFlight");
   };
 
+  const headers = ["From", "Date", "T/W", "To"];
+
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full p-4">
         {/* Header Section */}
-        <View className="flex-row items-center justify-between mb-6">
-          <Text className="text-lg font-pmedium text-gray-800">Flights</Text>
+        <View className="flex-row items-center justify-between mb-8">
+          <Text className="text-2xl font-pbold text-gray-800">Flights</Text>
           <CustomButton
             title="Find"
-            height="40px"
-            className="w-1/3 bg-white"
-            textStyles="text-blue-500"
+            className="w-32 bg-blue-500 rounded-lg py-3 "
+            textStyles="text-white"
             handlePress={handleFindPress}
           />
         </View>
 
-        {/* Table Header */}
-        <View className="flex-row justify-between border-b-2 border-gray-400 p-2 mb-4 bg-red-800 rounded-lg">
-          <Text className="flex-1 text-base font-psemibold text-white">
-            From
-          </Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-center">
-            Date
-          </Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-center">
-            T/W
-          </Text>
-          <Text className="flex-1 text-base font-psemibold text-white text-right">
-            To
-          </Text>
-        </View>
+        <TableHeaderRow headers={headers} className="mb-4 bg-blue-700" />
 
         {/* Table Rows */}
         {flights.map((flight, index) => (
@@ -65,18 +54,7 @@ const Flights = () => {
               index % 2 === 0 ? "bg-gray-100" : "bg-white"
             }`}
           >
-            <Text className="flex-1 text-base text-gray-800">
-              {flight.from}
-            </Text>
-            <Text className="flex-1 text-base text-gray-800 text-center">
-              {flight.date}
-            </Text>
-            <Text className="flex-1 text-base text-gray-800 text-center">
-              {flight.weight}
-            </Text>
-            <Text className="flex-1 text-base text-gray-800 text-right">
-              {flight.to}
-            </Text>
+            <TableDataRow rowData={flight} />
           </Pressable>
         ))}
       </ScrollView>

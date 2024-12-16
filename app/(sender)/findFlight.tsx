@@ -6,38 +6,40 @@ import TravelerOptions from "@/components/OneInput";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
+import TwoInput from "@/components/TwoInput";
+import OneInput from "@/components/OneInput";
+import CounterInput from "@/components/CounterInput";
+import CalendarInput from "@/components/CalendarInput";
 
 const FindFlights = () => {
-  const handleFindlPress = () => {
-    router.push("/flights");
+  const handleFindPress = () => {
+    router.push("/Flights");
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full px-4">
         <Text className="text-2xl font-pbold text-center text-red-500 ">
           Find Flight
         </Text>
 
-        <TravelerDropdown
-          title="From"
-          placeholder={["Country", "Government"]}
+        <TwoInput title="From" placeholder={["Country", "Government"]} />
+        <TwoInput title="To" placeholder={["Country", "Government"]} />
+        <OneInput title="Type of Weight" placeholder="Clothes,Paper" />
+        <CounterInput title="Weight" minValue={0} maxValue={50} />
+        <CounterInput title="Paper Count" minValue={0} maxValue={100} />
+        <CalendarInput
+          title="Flight Date"
+          placeholder="Select flight date"
+          onDateChange={(date) => console.log("Selected Date:", date)}
         />
-        <TravelerDropdown title="To" placeholder={["Country", "Government"]} />
-        <TravelerOptions title="Type of Weight" placeholder="Clothes,Paper" />
-        <TravelerOptions title="Weight" placeholder="- 7KG +" />
-        <TravelerOptions title="Paper Count" placeholder="- 10 +" />
-        <TravelerOptions title="Flight Date" placeholder="16-12-2024" />
-        <TravelerOptions
-          title="Last day for delivery"
-          placeholder="14-12-2024"
-        />
+
         <View className="flex-row justify-between mt-6 gap-4">
           <CustomButton
             title="Find"
-            handlePress={handleFindlPress}
-            className="flex-1 "
-            textStyles="text-white"
+            handlePress={handleFindPress}
+            className="flex-1 bg-green-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
         </View>
       </ScrollView>

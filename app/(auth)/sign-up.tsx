@@ -72,9 +72,10 @@ const SignUp = () => {
           />
 
           <CustomButton
-            title="Sign Up"
+            title="Sign In"
             handlePress={handleSubmit}
-            className="mt-7"
+            className="mt-7 bg-red-500 py-3 rounded-lg"
+            textStyles="text-white font-bold text-lg text-center"
           />
 
           <View className="justify-center pt-5 flex-row gap-2">

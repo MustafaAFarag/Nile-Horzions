@@ -64,8 +64,9 @@ const Reservations = () => {
   ];
 
   const headers = ["Type", "Weight", "Paper", "Fees", "Status"];
-  const total = ["Total", "25KG", "Yes", "2500EGP"];
-  const available = ["Available", "10KG", "No", "800EGP"];
+
+  const total = ["Total", "25KG", "11", "2500EGP"];
+  const available = ["Available", "10KG", "2", "800EGP"];
 
   const getStatusStyles = (status: string) => {
     switch (status) {

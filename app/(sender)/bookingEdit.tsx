@@ -6,26 +6,31 @@ import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import { router } from "expo-router";
 import { icons } from "@/constants";
+import OneInput from "@/components/OneInput";
+import CounterInput from "@/components/CounterInput";
 
 const BookingEdit = () => {
   const handleCancelPress = () => {
-    router.push("/myReservations");
+    router.push("/MyReservations");
   };
 
   const handleUpdatePress = () => {
-    router.push("/myReservations");
+    router.push("/MyReservations");
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full px-4">
         <Text className="text-2xl font-pbold text-center text-red-500 mb-6">
-          Booking
+          Edit Booking
         </Text>
 
-        <TravelerOptions title="Weight" placeholder="- 2 KG +" />
-        <TravelerOptions title="Type of Weight" placeholder="Any" />
-        <TravelerOptions title="Paper Count" placeholder="- 3 +" />
+        <CounterInput title="Weight" minValue={0} maxValue={50} />
+
+        <OneInput title="Type of Weight" placeholder="Clothes,Paper" />
+
+        <CounterInput title="Paper Count" minValue={0} maxValue={50} />
+
         <View className="flex-row gap-10">
           <Text className="text-base font-pmedium text-gray-800 w-1/3">
             Upload Picture
@@ -47,20 +52,21 @@ const BookingEdit = () => {
           />
         </View>
 
-        <TravelerOptions title="Delivery Fees" placeholder="45 EGP" />
-        <TravelerOptions title="Total" placeholder="450 EGP" />
+        <OneInput title="Delivery Fees" placeholder="45 EGP" />
+        <OneInput title="Total" placeholder="450 EGP" />
+
         <View className="flex-row justify-between mt-6 gap-4">
           <CustomButton
             title="Cancel"
             handlePress={handleCancelPress}
-            className="flex-1 "
-            textStyles="text-white"
+            className="flex-1 bg-red-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
           <CustomButton
             title="Update"
             handlePress={handleUpdatePress}
-            className="flex-1 "
-            textStyles="text-white"
+            className="flex-1 bg-green-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
         </View>
       </ScrollView>

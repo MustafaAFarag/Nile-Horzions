@@ -1,17 +1,15 @@
 import React from "react";
-import { SafeAreaView, ScrollView, View, Text } from "react-native";
+import { SafeAreaView, ScrollView, View, Text, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
 import Table from "@/components/Table"; // Import the reusable Table component
 import { router } from "expo-router";
+import TableHeaderRow from "@/components/TableHeaderRow";
+import TableDataRow from "@/components/TableDataRow";
 
 const MyReservations = () => {
-  const handleEditPress = () => {
-    router.push("/editFlight");
-  };
-
-  const handleClosePress = () => {
-    router.push("/reservationStatus");
+  const handleRowPress = () => {
+    router.push("/BookingEdit");
   };
 
   const reservations = [
@@ -62,24 +60,44 @@ const MyReservations = () => {
 
   const headers = ["ID", "Reservation Date", "Weight", "Paper Count", "Status"];
 
-  const handleRowPress = () => {
-    router.push("/bookingEdit");
+  const getStatusStyles = (status: string) => {
+    switch (status) {
+      case "Confirmed":
+        return "bg-green-100 text-green-500";
+      case "Pending":
+        return "bg-yellow-100 text-yellow-500";
+      case "Cancelled":
+        return "bg-red-100 text-red-500";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full px-4">
         <View className="flex-row items-center justify-between mb-6">
           <Text className="text-xl font-bold text-blue-800">
             My Reservations
           </Text>
         </View>
 
-        <Table
-          headers={headers}
-          data={reservations}
-          onRowPress={handleRowPress}
-        />
+        <TableHeaderRow headers={headers} className="mb-4 bg-blue-700" />
+
+        {reservations.map((reservation, index) => (
+          <Pressable
+            key={index}
+            className={`flex-row justify-between items-center py-4 px-4 mb-3 rounded-lg ${
+              index % 2 === 0 ? "bg-gray-100" : "bg-white"
+            }`}
+            onPress={handleRowPress}
+          >
+            <TableDataRow
+              rowData={reservation}
+              getStatusStyles={getStatusStyles}
+            />
+          </Pressable>
+        ))}
       </ScrollView>
       <StatusBar style="auto" />
     </SafeAreaView>

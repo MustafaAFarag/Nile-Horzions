@@ -13,22 +13,22 @@ const MyFlights = () => {
   };
 
   const flights = [
-    { id: "1111", date: "15-12", weight: "5kg", status: "Confirmed" },
-    { id: "2222", date: "15-12", weight: "5kg", status: "Pending" },
-    { id: "3333", date: "16-12", weight: "8kg", status: "Cancelled" },
-    { id: "4444", date: "17-12", weight: "10kg", status: "Confirmed" },
-    { id: "5555", date: "18-12", weight: "3kg", status: "Pending" },
+    { id: "1111", date: "15-12", weight: "5kg", status: "Open" },
+    { id: "2222", date: "15-12", weight: "5kg", status: "Ready" },
+    { id: "3333", date: "16-12", weight: "8kg", status: "Completed" },
+    { id: "4444", date: "17-12", weight: "10kg", status: "Open" },
+    { id: "5555", date: "18-12", weight: "3kg", status: "Ready" },
   ];
 
   const headers = ["ID", "Date", "Weight", "Status"];
 
   const getStatusStyles = (status: string) => {
     switch (status) {
-      case "Confirmed":
+      case "Open":
         return "bg-green-100 text-green-500";
-      case "Pending":
+      case "Ready":
         return "bg-yellow-100 text-yellow-500";
-      case "Cancelled":
+      case "Completed":
         return "bg-red-100 text-red-500";
       default:
         return "bg-gray-100 text-gray-800";

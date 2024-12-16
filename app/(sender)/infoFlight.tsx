@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import Table from "@/components/Table";
+import TableDataRow from "@/components/TableDataRow";
 import { images } from "@/constants";
 import { router } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
@@ -9,75 +10,66 @@ const infoFlight = () => {
   const data = [
     {
       type: "From",
-      w: "Cairo",
-      paper: "",
-      fees: "Nasr City",
-      status: "",
+      city: "Cairo",
+      address: "Nasr City",
+      weight: "", // Ensure all fields exist
+      typeOfWeight: "",
     },
     {
       type: "To",
-      w: "Damascus",
-      paper: "",
-      fees: "Rekneddine",
-      status: "",
+      city: "Damascus",
+      address: "Rekneddine",
+      weight: "",
+      typeOfWeight: "",
     },
     {
-      type: "Available Weight",
-      w: "",
-      paper: "10kg",
-      fees: "",
-      status: "",
+      type: "Weight",
+      city: "",
+      address: "",
+      weight: "10kg",
+      typeOfWeight: "",
     },
     {
       type: "Type of Weight",
-      w: "",
-      paper: "Any,Paper",
-      fees: "",
-      status: "",
-    },
-    {
-      type: "Last Day of Delievery",
-      w: "",
-      paper: "14-12-2024",
-      fees: "",
-      status: "",
-    },
-    {
-      type: "Price per KG",
-      w: "",
-      paper: "150 EGP",
-      fees: "",
-      status: "",
-    },
-    {
-      type: "Price per Paper",
-      w: "",
-      paper: "50 EGP",
-      fees: "",
-      status: "",
+      city: "",
+      address: "",
+      weight: "",
+      typeOfWeight: "Any,Paper",
     },
   ];
 
   const handleBookPress = () => {
-    router.push("/booking");
+    router.push("/Booking");
   };
 
   return (
-    <SafeAreaView className="h-full bg-blue-300">
-      <ScrollView className="w-full h-full p-6">
-        <Text className="text-xl font-bold text-blue-800">My Reservations</Text>
-        <Text className="text-center text-xl font-pbold ">
-          15 December Saturday
-        </Text>
-        {/* Table Component */}
-        <Table data={data} onRowPress={(row) => console.log(row)} />
+    <SafeAreaView className="h-full bg-blue-300 pt-14">
+      <ScrollView className="w-full h-full px-4">
+        <View className="flex-row items-center justify-between mb-6">
+          <Text className="text-2xl font-pbold text-blue-800">Flight Info</Text>
+          <Text className="text-center text-xl font-pbold ">
+            15 December Saturday
+          </Text>
+        </View>
+
+        {/* Table Data */}
+        {data.map((info, index) => (
+          <View
+            key={index}
+            className={`flex-row justify-between items-center py-4 px-4 mb-3 rounded-lg ${
+              index % 2 === 0 ? "bg-gray-100" : "bg-white"
+            }`}
+          >
+            <TableDataRow rowData={info} hideEmptyValues />
+          </View>
+        ))}
 
         <View className="flex-row justify-between mt-6 gap-4">
           <CustomButton
             title="Book"
             handlePress={handleBookPress}
-            className="flex-1 "
-            textStyles="text-white"
+            className="flex-1 bg-green-500 py-3 rounded-lg"
+            textStyles="text-center text-white text-lg font-semibold"
           />
         </View>
       </ScrollView>
