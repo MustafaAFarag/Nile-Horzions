@@ -10,7 +10,7 @@ type TableDataRowProps = {
 const TableDataRow = ({
   rowData,
   getStatusStyles,
-  hideEmptyValues = false, // Default to false for backward compatibility
+  hideEmptyValues = false,
 }: TableDataRowProps) => {
   return (
     <View className="flex-row justify-between items-center py-2 px-1">
@@ -32,7 +32,7 @@ const TableDataRow = ({
             <Text
               className={`text-sm ${
                 key === "status" && typeof value === "string"
-                  ? "font-pmedium text-[0.760rem]"
+                  ? "font-pmedium text-[0.750rem]"
                   : "text-gray-700"
               } ${
                 key === "status" && typeof value === "string"

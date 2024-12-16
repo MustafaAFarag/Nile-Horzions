@@ -76,17 +76,16 @@ const Reservations = () => {
       case "Cancelled":
         return "bg-red-100 text-red-500";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "";
     }
   };
 
   return (
     <SafeAreaView className="h-full bg-blue-300 pt-14 ">
       <ScrollView className="w-full px-4">
-        {/* Page Header */}
-        <View className="flex-row items-center justify-between mb-6">
-          <Text className="text-xl font-bold text-blue-800">Reservations</Text>
-        </View>
+        <Text className="text-2xl font-pbold text-center text-red-500 mb-4">
+          Reservations
+        </Text>
 
         {/* Table Section */}
         <TableHeaderRow headers={headers} className="bg-blue-700 mb-3" />
